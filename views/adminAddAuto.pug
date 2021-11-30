@@ -1,0 +1,18 @@
+html 
+    head
+        title addauto
+        link(rel="stylesheet" href="../dist/style.css")
+    body(style="background-image: url(../dist/static/chevron.png); background-repeat: repeat")
+        div(class="sidenav")
+            a(href='autos' style="padding-top: 150px") Данные автомобилей
+            a(href='../logout') Выход
+        form(action="/newAuto" method="post" enctype="multipart/form-data" class="box" style="top:50%; left: 40%; width: 40%; margin: 2%")
+            h3 Добавление нового авто
+            <label for="brand">Марка</label><input type="text" name="brand">
+            <label for="model">Модель</label><input type="text" name="model">
+            <label for="category">Категория</label><input type="text" name="category">
+            <label for="price">Цена</label><input style="color: white" type="number" name="price">
+            <label for="rest">Количество</label><input style="color: white" type="number" name="rest">
+            <label for="file">Картинка</label></br>
+            <input style="color: white; padding-left: 40px;font-size: 18px; text-align: center; margin: 2%" type="file" name="file">
+            input(type="submit" value="Добавить авто")  

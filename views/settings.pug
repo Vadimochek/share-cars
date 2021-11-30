@@ -1,0 +1,28 @@
+html 
+    head
+        title settings
+        link(rel="stylesheet" href="./dist/style.css")
+    body(style="background-image: url(./dist/static/chevron.png); background-repeat: repeat")
+        div(class="sidenav")
+            a(href='profile' style="padding-top: 150px") К профилю
+            a(href='logout') Выход
+        form(action="/changeSettings", method="POST" class="box" style="top:55%; left: 40%; width: 40%; margin: 1%")
+                h3 Изменение данных 
+                <label for="username">ФИО</label><input type="text" value=#{user.username} id="username">
+                <label for="email">Почта</label><input type="text" value=#{user.email} id="email">
+                <label for="phone">Телефон</label><input type="text" value=#{user.phone} id="phone">
+                <label for="password">Новый пароль</label><input type="text" id="password">
+                if user.fact!=null
+                    <label for="number">Номер лицензии на вождение</label><input type="text" value=#{user.fact.license_number} id="number">
+                    <label for="category">Категория т.с.</label><input type="text" value=#{user.fact.license_category} id="category">
+                    <label for="date">Дата выдачи лицензии</label><input type="text" value=#{user.fact.date} id="date">
+                else
+                    <label for="number">Номер лицензии на вождение</label><input type="text" placeholder="Заполните поле" id="number">
+                    <label for="category">Категория т.с.</label><input type="text" placeholder="Заполните поле" id="category">
+                    <label for="date">Дата выдачи лицензии</label><input type="text" placeholder="Заполните поле" id="date">
+                input(type="submit" value="Изменить данные" id="changer")
+        script(src="./dist/scripts/bundle.js")
+        script(src="./dist/scripts/changeSettings.js")
+
+                        
+            

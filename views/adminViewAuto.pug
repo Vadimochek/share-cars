@@ -1,0 +1,37 @@
+html 
+    head
+        title viewAuto
+        link(rel="stylesheet" href="../dist/style.css")
+    body(style="background-image: url(../dist/static/chevron.png); background-repeat: repeat")
+        div(class="sidenav")
+            a(href='orders' style="padding-top: 150px") Данные заказов
+            a(href='add') Добавление авто
+            a(href='../logout') Выход
+        table(class="table_sort" style="width: 100%")
+            caption(style="font-size: 20px; margin: 1%") Данные автомобилей
+            thead
+                tr
+                    th(style="width: 8%") Марка
+                    th(style="width: 8%") Модель
+                    th(style="width: 8%") Категория
+                    th(style="width: 20%") Картинка
+                    th(style="width: 10%") Цена
+                    th(style="width: 10%") Остаток
+                    th(style="width: 16%") Обновление данных
+                    th(style="width: 16%") Удаление авто
+            tbody
+                form(action="/changeAuto", method="POST")
+                    each product in products
+                        tr
+                            td= product.brand
+                            td= product.model
+                            td= product.category
+                            td <img style="max-width: 30%" src="#{product.picture}"/>
+                            td <input style="width: 100px" type="number" value="#{product.price}" id="p#{product.id}"> 
+                            td <input style="width: 100px" type="number" value="#{product.rest}" id="n#{product.id}"> 
+                            td <input type="button" class="type" id="r#{product.id}" formaction="/changeAuto" value="Обновить данные">
+                            td <input  type="button" class="type" id="d#{product.id}" formaction="/deleteAuto" value="Удалить позицию">
+        script(src="../dist/scripts/bundle.js")
+        script(src="../dist/scripts/changeAuto.js")
+                        
+            

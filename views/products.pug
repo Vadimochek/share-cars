@@ -1,0 +1,35 @@
+html 
+    head
+        title Автомобили
+        link(rel="stylesheet" href="./dist/style.css")
+    body(style="background-image: url(./dist/static/chevron.png); background-repeat: repeat")
+        div(class="sidenav")
+            a(href='profile' style="padding-top: 150px") Профиль
+            a(href='logout') Выход
+        div
+            p(style="text-align: center; margin-top: 20px;") Доступные машины для заказа. Возможна сортировка по столбцам.
+        table(class="table_sort")
+            thead
+                tr
+                    th Картинка
+                    th Марка
+                    th Модель
+                    th Цена (За день)
+                    th Категория
+                    th Оформление
+            tbody
+                each product in products
+                    tr
+                        td(style="width: 25%; max-height: 10%") <img src="#{product.picture}" style="max-width: 100%;">
+                        td(style="width: 15%")= product.brand
+                        td(style="width: 15%")= product.model
+                        td(style="width: 15%")= product.price
+                        td(style="width: 11%")= product.category
+                        if product.rest>0
+                            td(style="width: 19%") <input type="button" value="Оформить заказ" class="type" id="#{product.category}#{product.id}">
+                        else
+                            td(style="width: 19%") В автопарке свободных машин нет                    
+        script(src="./dist/scripts/bundle.js")
+        script(src="./dist/scripts/product.js")
+                        
+            

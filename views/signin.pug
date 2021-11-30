@@ -1,0 +1,15 @@
+html 
+    head
+        title Авторизация
+        link(rel="stylesheet" href="./dist/style.css")
+    body(style="background-image: url(./dist/static/roadlog.jpg); background-repeat: round")
+        form(action="/signin", method="POST" class="box")
+            h3 Авторизация
+            input(type="email" placeholder="Email" id="login")
+            input(type="password" placeholder="Password" id="password")
+            input(type="submit" value="Вход" id="signgo")
+            <h4 style="color:grey">Ещё не зарегистрированы?</h4>
+            <h3 style="color:grey">↓</h3>
+            <a style="color: #e207fa" href="./registration"><b>Регистрация</b></a>
+        script(src="./dist/scripts/bundle.js")
+        script(src="./dist/scripts/signin.js")

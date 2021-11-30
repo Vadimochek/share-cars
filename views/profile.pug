@@ -1,0 +1,60 @@
+html 
+    head
+        title profile
+        link(rel="stylesheet" href="./dist/style.css")
+    body(style="background-image: url(./dist/static/chevron.png); background-repeat: repeat")
+        div(class="sidenav")
+            a(href='autos'  style="padding-top: 150px") К выбору автомобиля
+            a(href='settings') Изменить данные
+            a(href='logout') Выход
+        table(class="table_sort" style="top: 5%; left:3%; width: 100%")
+            caption(style="font-size: 20px; margin: 1%") Личные данные пользователя
+            thead
+                tr
+                    th ФИО
+                    th Почта
+                    th Номер телефона
+                    th Категория
+                    th Номер лицензии
+                    th Дата выдачи лицензии
+            tbody
+                tr
+                    td(style="width: 15%")= user.username
+                    td(style="width: 15%")= user.email
+                    td(style="width: 15%")= user.phone
+                    if flag
+                        td(style="width: 20%")= user.fact.license_category
+                        td(style="width: 20%")= user.fact.license_number
+                        td(style="width: 30%")= user.fact.date
+                    else
+                        td(style="width: 20%") Нет данных
+                        td(style="width: 20%") Нет данных
+                        td(style="width: 30%") Нет данных
+
+        table(class="table_sort" style=" left: 3%; top:30%; width: 100%")
+            caption(style="font-size: 20px; margin: 1%") Заказы пользователя
+            thead
+                tr
+                    th Марка
+                    th Модель
+                    th Статус заказа
+                    th Активный QR
+                    th Отменить
+                    th Завершить
+            tbody
+                if autos
+                    each car in autos 
+                        tr
+                            td(style="width: 15%")=car.brand
+                            td(style="width: 15%")=car.model
+                            td(style="width: 15%")=car.orders.status
+                            if (car.orders.status=="Активен")
+                                td(style="width: 20%") <img src="#{car.orders.qrcode}">
+                                td(style="width: 20%") <input type="button" class="type" id="d#{car.orders.id}" value="Отменить заказ">
+                                td(style="width: 30%") <input type="button" class="type" id="e#{car.orders.id}" value="Завершить заказ">
+                            else
+                                td(style="width: 20%") -
+                                td(style="width: 20%") -
+                                td(style="width: 20%") -
+        script(src="./dist/scripts/bundle.js")
+        script(src="./dist/scripts/updateOrder.js")

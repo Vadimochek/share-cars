@@ -1,0 +1,34 @@
+
+html 
+    head
+        title viewOrder
+        link(rel="stylesheet" href="../dist/style.css")
+    body(style="background-image: url(../dist/static/chevron.png); background-repeat: repeat")
+        div(class="sidenav")
+            a(href='autos' style="padding-top: 150px") Автомобили
+            a(href='../logout') Выход
+        table(class="table_sort" style="left: 5%; top: 5%;width: 80%")
+            caption(style="font-size: 20px; margin: 1%") Данные заказов
+            thead 
+                tr
+                    th(style="width: 10%") Номер заказа
+                    th(style="width: 10%") Номер автомобиля
+                    th(style="width: 10%") Номер заказчика
+                    th(style="width: 15%") Статус заказа
+                    th(style="width: 20%") Завершить
+                    th(style="width: 20%") Отменить
+            tbody
+                each order in orders 
+                    tr 
+                        td=order.id
+                        td=order.autoId
+                        td(id="#{order.id}")=order.userId
+                        td=order.status
+                            if (order.status=="Активен")
+                                td <input type="button" class="type" id="e#{order.id}" value="Завершить заказ">
+                                td <input type="button" class="type" id="d#{order.id}" value="Отменить заказ">
+                            else
+                                td -
+                                td -
+        script(src="../dist/scripts/bundle.js")
+        script(src="../dist/scripts/changeAdminOrder.js")

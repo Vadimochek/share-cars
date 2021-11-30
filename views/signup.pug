@@ -1,0 +1,15 @@
+html
+    head
+        title Регистрация
+        link(rel="stylesheet" href="./dist/style.css")
+    body(style="background-image: url(./dist/static/roadlog.jpg); background-repeat: round")
+        form(action="/signup", method="POST" class="box")
+            h3 Регистрация
+            <label for="username">ФИО</label><input placeholder="Username" type="text" id="username">
+            <label for="email">Почта</label><input placeholder="Email"type="text" id="login">
+            <label for="phone">Телефон</label><input placeholder="Phone" type="text" id="phone">
+            <label for="password">Пароль</label><input placeholder="Password" type="password" id="password">
+            input(type="submit" value="Зарегистрироваться" id="signup")  
+            p <a style="color: #e207fa" href = "/sign">Вы уже зарегистрированы?</a>
+        script(src="./dist/scripts/bundle.js")
+        script(src="./dist/scripts/signup.js")
