@@ -21,13 +21,17 @@ require('./routes/autoRouter')(app);
 require('./routes/orderRouter')(app);
 
 const db = require("./models");
+
+
+db.sequelize.sync()
+
+app.listen(5555);
+
+
+
+
 const Role = db.role;
 
-// db.sequelize.sync({force: true}).then(() => {
-//     console.log('Drop and Resync Database with { force: true }');
-//     initial();
-//    });
-   db.sequelize.sync()
 function initial() {
     Role.create({
     id : 1,
@@ -40,4 +44,9 @@ function initial() {
     });
    }
 
-app.listen(5555);
+
+
+// db.sequelize.sync({force: true}).then(() => {
+//     console.log('Drop and Resync Database with { force: true }');
+//     initial();
+//    });
